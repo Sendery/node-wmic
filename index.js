@@ -13,7 +13,7 @@ const data = {};
 for (let aliasItem of aliasItems) {
   data[aliasItem] = () =>
     new Promise((resolve, reject) => {
-      execFile(wmic, [aliasItem, 'get', '/VALUE'], (err, stdout, stderr) => {
+      execFile(wmic, [aliasItem, 'get', '/VALUE'],{windowsHide:true}, (err, stdout, stderr) => {
         if (err || stderr) {
           reject(err || stderr);
         }
